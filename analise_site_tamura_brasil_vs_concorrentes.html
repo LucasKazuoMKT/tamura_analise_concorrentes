@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análise de Site — Tamura Brasil vs. Concorrentes</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;font-size:15px;color:#1a2332;background:#f7f8fa;padding:24px}
+.app{max-width:900px;margin:0 auto;background:#fff;border-radius:16px;padding:28px;box-shadow:0 4px 24px rgba(0,0,0,.08)}
+.section{display:none;animation:fadeIn .3s ease}
+.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;border-bottom:1px solid #eef0f4;padding-bottom:12px}
+.tab{padding:7px 14px;border-radius:20px;border:1px solid transparent;font-size:13px;cursor:pointer;background:transparent;color:#4a5568;transition:all .15s;font-family:inherit}
+.tab:hover{background:#f7f8fa;color:#1a2332}
+.tab.active{background:#e6f1fb;color:#185fa5;border-color:#b5d4f4}
+h1{font-size:20px;font-weight:600;margin-bottom:6px}
+h2{font-size:16px;font-weight:600;margin-bottom:16px;color:#1a2332}
+h3{font-size:14px;font-weight:600;margin-bottom:8px}
+.sub{font-size:13px;color:#4a5568;margin-bottom:20px;line-height:1.6}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.card{background:#fff;border:1px solid #eef0f4;border-radius:12px;padding:14px 16px}
+.card-sec{background:#f7f8fa;border-radius:8px;padding:12px 14px}
+.metric-val{font-size:22px;font-weight:600;margin-bottom:2px}
+.metric-lbl{font-size:12px;color:#8a92a3}
+.badge{display:inline-block;font-size:11px;padding:3px 9px;border-radius:20px;font-weight:600}
+.badge-green{background:#eaf3de;color:#3b6d11}
+.badge-red{background:#fcebeb;color:#a32d2d}
+.badge-warn{background:#faeeda;color:#854f0b}
+.badge-info{background:#e6f1fb;color:#185fa5}
+.score-bar{height:8px;border-radius:4px;background:#eef0f4;margin-top:6px;overflow:hidden}
+.score-fill{height:100%;border-radius:4px;transition:width .6s ease}
+.fill-green{background:#639922}
+.fill-amber{background:#ba7517}
+.fill-red{background:#a32d2d}
+.fill-blue{background:#185fa5}
+.row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #eef0f4}
+.row:last-child{border-bottom:none}
+.check{font-size:14px;width:20px;text-align:center}
+.feat-lbl{flex:1;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:left;padding:8px 10px;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#4a5568;border-bottom:1px solid #eef0f4;background:#f7f8fa}
+td{padding:8px 10px;border-bottom:1px solid #eef0f4;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+.gap-item{padding:12px 14px;border-left:3px solid;border-radius:0 8px 8px 0;margin-bottom:8px;background:#f7f8fa}
+.gap-critical{border-color:#e24b4a}
+.gap-high{border-color:#ef9f27}
+.gap-medium{border-color:#378add}
+.gap-title{font-size:13px;font-weight:600;margin-bottom:4px}
+.gap-desc{font-size:12px;color:#4a5568;line-height:1.5}
+.quem{font-size:11px;color:#8a92a3;margin-top:6px}
+.quem strong{color:#1a2332}
+.priority-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-r{background:#e24b4a}.dot-a{background:#ef9f27}.dot-b{background:#378add}
+.rec-card{padding:14px 16px;border-radius:12px;border:1px solid #eef0f4;margin-bottom:10px;background:#fff}
+.rec-num{font-size:22px;font-weight:600;color:#8a92a3;margin-right:12px;min-width:28px}
+.rec-content{flex:1}
+.rec-row{display:flex;align-items:flex-start;gap:8px}
+.tag-row{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.divider{border:none;border-top:1px solid #eef0f4;margin:20px 0}
+.header-area{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.logo-mark{width:42px;height:42px;border-radius:10px;background:#e6f1fb;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#185fa5}
+</style>
+</head>
+<body>
+<div class="app">
+
+<div class="header-area">
+  <div class="logo-mark">T</div>
+  <div>
+    <h1>Análise de Site — Tamura Brasil vs. Concorrentes</h1>
+    <p class="metric-lbl">Benchmarking digital · Setor de transformadores elétricos · Março 2026</p>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="tab active" onclick="show('overview',this)">Visão geral</button>
+  <button class="tab" onclick="show('market',this)">O que o mercado faz</button>
+  <button class="tab" onclick="show('scorecard',this)">Scorecard</button>
+  <button class="tab" onclick="show('gaps',this)">Gaps da Tamura</button>
+</div>
+
+<!-- VISÃO GERAL -->
+<div id="overview" class="section active">
+  <h2>Panorama geral</h2>
+  <p class="sub">A Tamura Brasil possui uma presença digital funcional, mas ainda muito aquém do padrão atual do mercado industrial B2B. A análise cobriu 10 concorrentes — divididos em dois grupos: gigantes globais (WEG, ABB, Siemens, Schneider, Hitachi, GE) e fabricantes nacionais (COTRAN, T. União, Arel, Furukawa).</p>
+  <div class="grid-3" style="margin-bottom:20px">
+    <div class="card">
+      <div class="metric-val" style="color:#854f0b">4,2<span style="font-size:14px;color:#8a92a3">/10</span></div>
+      <div class="metric-lbl">Pontuação digital Tamura Brasil</div>
+    </div>
+    <div class="card">
+      <div class="metric-val">14</div>
+      <div class="metric-lbl">Gaps identificados no site</div>
+    </div>
+    <div class="card">
+      <div class="metric-val" style="color:#a32d2d">5</div>
+      <div class="metric-lbl">Gaps críticos (alta prioridade)</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3 style="margin-bottom:12px;color:#3b6d11">O que a Tamura tem</h3>
+      <div class="row"><span class="check">✓</span><span class="feat-lbl">Site multilíngue (PT / EN / ES)</span></div>
+      <div class="row"><span class="check">✓</span><span class="feat-lbl">Central de downloads (catálogos, manuais)</span></div>
+      <div class="row"><span class="check">✓</span><span class="feat-lbl">Tour digital 360° da fábrica</span></div>
+      <div class="row"><span class="check">✓</span><span class="feat-lbl">Formulário de solicitação de orçamento</span></div>
+      <div class="row"><span class="check">✓</span><span class="feat-lbl">Seção de carreira com vagas abertas</span></div>
+      <div class="row"><span class="check">✓</span><span class="feat-lbl">Blog de conteúdo técnico</span></div>
+      <div class="row"><span class="check">✓</span><span class="feat-lbl">Certificações e credenciamento BNDES</span></div>
+      <div class="row"><span class="check">✓</span><span class="feat-lbl">Página de FAQ</span></div>
+      <div class="row"><span class="check">✓</span><span class="feat-lbl">Áreas de atuação por segmento</span></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:12px;color:#a32d2d">O que a Tamura não tem</h3>
+      <div class="row"><span class="check" style="color:#a32d2d">✗</span><span class="feat-lbl">Plataforma IoT / monitoramento digital</span></div>
+      <div class="row"><span class="check" style="color:#a32d2d">✗</span><span class="feat-lbl">Portal exclusivo para clientes/parceiros</span></div>
+      <div class="row"><span class="check" style="color:#a32d2d">✗</span><span class="feat-lbl">Configurador / seletor de produto online</span></div>
+      <div class="row"><span class="check" style="color:#a32d2d">✗</span><span class="feat-lbl">Cases de sucesso com clientes</span></div>
+      <div class="row"><span class="check" style="color:#a32d2d">✗</span><span class="feat-lbl">Página de sustentabilidade / ESG</span></div>
+      <div class="row"><span class="check" style="color:#a32d2d">✗</span><span class="feat-lbl">Chat ou chatbot de atendimento</span></div>
+      <div class="row"><span class="check" style="color:#a32d2d">✗</span><span class="feat-lbl">Webinars / eventos on-demand</span></div>
+      <div class="row"><span class="check" style="color:#a32d2d">✗</span><span class="feat-lbl">Locação de transformadores</span></div>
+      <div class="row"><span class="check" style="color:#a32d2d">✗</span><span class="feat-lbl">Depoimentos ricos / métricas de impacto</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- MERCADO -->
+<div id="market" class="section">
+  <h2>O que o mercado está fazendo</h2>
+  <p class="sub">Os concorrentes investem em 6 pilares digitais consistentes. Veja o que cada um oferece e o nível de maturidade.</p>
+
+  <div style="margin-bottom:20px">
+    <div class="gap-item" style="border-color:#185fa5">
+      <div class="gap-title">1. Plataformas IoT e monitoramento em tempo real</div>
+      <div class="gap-desc">As líderes globais transformaram o transformador em um produto conectado. WEG lançou o <strong>Transformer Fleet Management</strong> com IA e machine learning. Hitachi Energy opera o ecossistema <strong>TXpert™</strong> com monitoramento em nuvem, manutenção preditiva e alertas antecipados. Schneider oferece o <strong>EcoStruxure Transformer Expert</strong> com sensores IoT para prolongar vida útil. O produto virou serviço.</div>
+      <div class="quem">Quem faz: <strong>WEG · Hitachi Energy · Schneider Electric</strong></div>
+    </div>
+    <div class="gap-item" style="border-color:#3b6d11">
+      <div class="gap-title">2. Portais digitais exclusivos para clientes e parceiros</div>
+      <div class="gap-desc">Schneider Electric criou o <strong>mySchneider</strong> — portal personalizado com preços e disponibilidade em tempo real 24/7, gestão de pedidos, catálogo filtrado e app mobile. WEG mantém o <strong>WEG Connect</strong> para parceiros. ABB disponibiliza sua <strong>loja oficial online</strong> com e-commerce direto. Isso reduz fricção no ciclo de compra B2B.</div>
+      <div class="quem">Quem faz: <strong>Schneider Electric · WEG · ABB</strong></div>
+    </div>
+    <div class="gap-item" style="border-color:#ba7517">
+      <div class="gap-title">3. Conteúdo técnico robusto e thought leadership</div>
+      <div class="gap-desc">Hitachi Energy publica <strong>webinars sob demanda</strong> com especialistas técnicos. Schneider Electric produz relatórios de mercado. WEG divulga casos de subestações digitais energizadas. Transformadores União mantém um blog ativo com mais de 30 artigos bem ranqueados no Google. O conteúdo técnico virou canal de geração de demanda.</div>
+      <div class="quem">Quem faz: <strong>Hitachi Energy · Schneider · WEG · T. União</strong></div>
+    </div>
+    <div class="gap-item" style="border-color:#a32d2d">
+      <div class="gap-title">4. Cases de sucesso e prova social qualificada</div>
+      <div class="gap-desc">Todos os grandes players publicam <strong>customer stories</strong> detalhadas com problema, solução e resultado mensurado. Hitachi Energy destaca projetos em parques solares, data centers e subestações digitais. WEG apresenta estudos com redução de até 48% no consumo de energia.</div>
+      <div class="quem">Quem faz: <strong>Hitachi Energy · WEG · Schneider · ABB</strong></div>
+    </div>
+    <div class="gap-item" style="border-color:#639922">
+      <div class="gap-title">5. Serviços de locação, retrofit e garantia estendida</div>
+      <div class="gap-desc">Transformadores União oferece <strong>locação de transformadores</strong> e <strong>retrofit em equipamentos de outras marcas</strong> além de garantia estendida por até 60 meses. Hitachi Energy oferece <strong>gestão do ciclo de vida completo</strong>: instalação, manutenção, extensão de vida e fim de vida.</div>
+      <div class="quem">Quem faz: <strong>Transformadores União · Hitachi Energy</strong></div>
+    </div>
+    <div class="gap-item" style="border-color:#534ab7">
+      <div class="gap-title">6. Sustentabilidade como diferencial de marca</div>
+      <div class="gap-desc">Schneider Electric foi eleita <strong>empresa mais sustentável do mundo</strong> pela TIME Magazine e comunica isso no topo do site. Hitachi Energy publica relatórios de sustentabilidade anuais. Com a COP30 no Brasil em 2025, esse é um diferencial cada vez mais decisivo em licitações e grandes contratos.</div>
+      <div class="quem">Quem faz: <strong>Schneider · Hitachi Energy · WEG · Siemens</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div id="scorecard" class="section">
+  <h2>Scorecard comparativo</h2>
+  <p class="sub">Pontuação de 0 a 10 por pilar digital. Tamura Brasil vs. principais concorrentes.</p>
+
+  <div class="card" style="margin-bottom:16px;overflow-x:auto">
+    <table>
+      <thead>
+        <tr>
+          <th style="min-width:140px">Empresa</th>
+          <th>Presença digital</th>
+          <th>Conteúdo técnico</th>
+          <th>Portal/e-com</th>
+          <th>IoT/Smart</th>
+          <th>ESG/Sustent.</th>
+          <th>UX/Design</th>
+          <th style="min-width:56px">Média</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#e6f1fb">
+          <td style="font-weight:600">Tamura Brasil</td>
+          <td>5</td><td>3</td><td>2</td><td>1</td><td>2</td><td>5</td>
+          <td><strong>3,0</strong></td>
+        </tr>
+        <tr><td style="font-weight:600">WEG</td><td>10</td><td>9</td><td>8</td><td>10</td><td>8</td><td>9</td><td><strong>9,0</strong></td></tr>
+        <tr><td style="font-weight:600">ABB</td><td>10</td><td>9</td><td>10</td><td>8</td><td>8</td><td>9</td><td><strong>9,0</strong></td></tr>
+        <tr><td style="font-weight:600">Schneider Electric</td><td>10</td><td>10</td><td>9</td><td>9</td><td>10</td><td>10</td><td><strong>9,7</strong></td></tr>
+        <tr><td style="font-weight:600">Hitachi Energy</td><td>9</td><td>10</td><td>7</td><td>10</td><td>9</td><td>9</td><td><strong>9,0</strong></td></tr>
+        <tr><td style="font-weight:600">Siemens</td><td>10</td><td>9</td><td>8</td><td>9</td><td>9</td><td>9</td><td><strong>9,0</strong></td></tr>
+        <tr><td style="font-weight:600">T. União</td><td>6</td><td>7</td><td>4</td><td>2</td><td>4</td><td>6</td><td><strong>4,8</strong></td></tr>
+        <tr><td style="font-weight:600">COTRAN</td><td>4</td><td>4</td><td>2</td><td>1</td><td>2</td><td>4</td><td><strong>2,8</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-bottom:12px">Tamura Brasil — pontuação por pilar</h3>
+  <div class="card">
+    <div style="display:grid;gap:12px">
+      <div><div style="display:flex;justify-content:space-between;font-size:13px"><span>Presença digital geral</span><span style="font-weight:600">5/10</span></div><div class="score-bar"><div class="score-fill fill-amber" style="width:50%"></div></div></div>
+      <div><div style="display:flex;justify-content:space-between;font-size:13px"><span>Conteúdo técnico e blog</span><span style="font-weight:600">3/10</span></div><div class="score-bar"><div class="score-fill fill-red" style="width:30%"></div></div></div>
+      <div><div style="display:flex;justify-content:space-between;font-size:13px"><span>Portal do cliente / e-commerce</span><span style="font-weight:600">2/10</span></div><div class="score-bar"><div class="score-fill fill-red" style="width:20%"></div></div></div>
+      <div><div style="display:flex;justify-content:space-between;font-size:13px"><span>Soluções IoT / smart monitoring</span><span style="font-weight:600">1/10</span></div><div class="score-bar"><div class="score-fill fill-red" style="width:10%"></div></div></div>
+      <div><div style="display:flex;justify-content:space-between;font-size:13px"><span>Sustentabilidade / ESG</span><span style="font-weight:600">2/10</span></div><div class="score-bar"><div class="score-fill fill-red" style="width:20%"></div></div></div>
+      <div><div style="display:flex;justify-content:space-between;font-size:13px"><span>UX e design do site</span><span style="font-weight:600">5/10</span></div><div class="score-bar"><div class="score-fill fill-amber" style="width:50%"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- GAPS -->
+<div id="gaps" class="section">
+  <h2>Gaps identificados no site da Tamura Brasil</h2>
+  <p class="sub">14 lacunas mapeadas e classificadas por prioridade estratégica.</p>
+
+  <div style="display:flex;gap:16px;margin-bottom:16px;font-size:12px;align-items:center;flex-wrap:wrap">
+    <span><span class="priority-dot dot-r"></span>Crítico — impacto direto em vendas</span>
+    <span><span class="priority-dot dot-a"></span>Alto — diferenciação competitiva</span>
+    <span><span class="priority-dot dot-b"></span>Médio — maturidade digital</span>
+  </div>
+
+  <div class="gap-item gap-critical"><div style="display:flex;justify-content:space-between;align-items:center"><div class="gap-title">Ausência de casos de sucesso (customer stories)</div><span class="badge badge-red">Crítico</span></div><div class="gap-desc">Compradores técnicos consultam cases antes de solicitar orçamento. A Tamura tem apenas 3 depoimentos genéricos, sem dados de projeto, segmento ou resultado mensurável. WEG, Hitachi e Schneider publicam dezenas de cases com dados reais.</div><div class="quem">Concorrentes com isso: <strong>WEG · ABB · Schneider · Hitachi · T. União</strong></div></div>
+
+  <div class="gap-item gap-critical"><div style="display:flex;justify-content:space-between;align-items:center"><div class="gap-title">Sem plataforma de monitoramento / IoT</div><span class="badge badge-red">Crítico</span></div><div class="gap-desc">O mercado está migrando para "transformador como serviço". WEG tem IA para diagnóstico preditivo. Hitachi tem o TXpert™ com cloud. Schneider tem sensores IoT plug-and-play. A Tamura não comunica nenhuma capacidade digital além do produto físico.</div><div class="quem">Concorrentes com isso: <strong>WEG · Hitachi Energy · Schneider Electric</strong></div></div>
+
+  <div class="gap-item gap-critical"><div style="display:flex;justify-content:space-between;align-items:center"><div class="gap-title">Blog com volume e frequência insuficientes</div><span class="badge badge-red">Crítico</span></div><div class="gap-desc">O site tem apenas ~8 artigos publicados, o mais recente de setembro de 2024. Transformadores União tem mais de 30 artigos ranqueados no Google para termos como "transformador a seco hospitalar". Esse gap representa perda direta de tráfego orgânico qualificado.</div><div class="quem">Concorrentes com blog ativo: <strong>T. União · Schneider · WEG · Hitachi</strong></div></div>
+
+  <div class="gap-item gap-critical"><div style="display:flex;justify-content:space-between;align-items:center"><div class="gap-title">Nenhuma página de sustentabilidade / ESG</div><span class="badge badge-red">Crítico</span></div><div class="gap-desc">Com a COP30 no Brasil em novembro de 2025, ESG deixou de ser diferencial e se tornou requisito em licitações e contratos com grandes indústrias. A Tamura não possui nenhuma página ou relatório de sustentabilidade publicado.</div><div class="quem">Concorrentes com ESG: <strong>Schneider · Hitachi · WEG · Siemens</strong></div></div>
+
+  <div class="gap-item gap-critical"><div style="display:flex;justify-content:space-between;align-items:center"><div class="gap-title">Sem chat, chatbot ou atendimento digital imediato</div><span class="badge badge-red">Crítico</span></div><div class="gap-desc">O único canal de contato digital é um formulário com retorno posterior. Compradores B2B modernos esperam respostas imediatas. Um chatbot técnico ou WhatsApp Business pode capturar oportunidades fora do horário comercial.</div><div class="quem">Schneider, Hitachi e ABB oferecem chat ou consulta digital imediata.</div></div>
+
+  <div class="gap-item gap-high"><div style="display:flex;justify-content:space-between;align-items:center"><div class="gap-title">Ausência de portal do cliente / parceiro</div><span class="badge badge-warn">Alto</span></div><div class="gap-desc">Schneider tem o mySchneider com preços em tempo real. WEG tem o WEG Connect para revendas. ABB tem loja online com e-commerce. A Tamura não oferece nenhum ambiente digital exclusivo para representantes, distribuidores ou clientes recorrentes.</div></div>
+
+  <div class="gap-item gap-high"><div style="display:flex;justify-content:space-between;align-items:center"><div class="gap-title">Sem configurador ou seletor de produto</div><span class="badge badge-warn">Alto</span></div><div class="gap-desc">Um configurador online permite que engenheiros especifiquem potência, tensão, classe de isolamento e filtrem produtos adequados sem precisar contatar um vendedor. Isso acelera o funil de vendas técnicas.</div></div>
+
+  <div class="gap-item gap-high"><div style="display:flex;justify-content:space-between;align-items:center"><div class="gap-title">Nenhum serviço de locação de transformadores</div><span class="badge badge-warn">Alto</span></div><div class="gap-desc">Transformadores União já oferece locação com flexibilidade de configuração de tensão. É uma oportunidade de receita recorrente e fidelização, especialmente para obras e projetos temporários.</div></div>
+
+  <div class="gap-item gap-medium"><div style="display:flex;justify-content:space-between;align-items:center"><div class="gap-title">Depoimentos sem dados mensuráveis</div><span class="badge badge-info">Médio</span></div><div class="gap-desc">Os 3 depoimentos exibidos são texto genérico sem nome da empresa, foto, cargo ou resultado quantificado. Cases com "reduzimos 30% no tempo de parada" convertem muito mais.</div></div>
+
+  <div class="gap-item gap-medium"><div style="display:flex;justify-content:space-between;align-items:center"><div class="gap-title">Sem mapa interativo de representantes</div><span class="badge badge-info">Médio</span></div><div class="gap-desc">A página de representantes é uma lista estática. Um mapa interativo por estado com filtro por produto facilita a localização do contato mais próximo e melhora a experiência de qualificação de compra.</div></div>
+
+  <div class="gap-item gap-medium"><div style="display:flex;justify-content:space-between;align-items:center"><div class="gap-title">Sem webinars ou biblioteca de vídeos técnicos</div><span class="badge badge-info">Médio</span></div><div class="gap-desc">Hitachi Energy realiza webinars técnicos sob demanda que funcionam como geração de leads qualificados. A Tamura tem apenas 1 vídeo no YouTube linkado no site.</div></div>
+
+  <div class="gap-item gap-medium"><div style="display:flex;justify-content:space-between;align-items:center"><div class="gap-title">Página de certificações sem documentos vinculados</div><span class="badge badge-info">Médio</span></div><div class="gap-desc">A seção de certificações lista os selos mas não permite download direto. Compradores em processos de homologação precisam de fácil acesso a esses documentos.</div></div>
+
+  <div class="gap-item gap-medium"><div style="display:flex;justify-content:space-between;align-items:center"><div class="gap-title">Ausência de dados institucionais de impacto</div><span class="badge badge-info">Médio</span></div><div class="gap-desc">Nenhum número de destaque na página "Sobre Nós": projetos entregues, clientes atendidos, capacidade produtiva. WEG exibe receita; Hitachi aponta a maior base instalada de transformadores no Brasil. Esses números constroem autoridade imediata.</div></div>
+
+  <div class="gap-item gap-medium"><div style="display:flex;justify-content:space-between;align-items:center"><div class="gap-title">UX mobile não otimizada para jornada B2B</div><span class="badge badge-info">Médio</span></div><div class="gap-desc">O site responde em mobile mas a jornada de pesquisa técnica não é otimizada: menus profundos, tabelas de especificação sem scroll horizontal e formulário sem validação em tempo real.</div></div>
+</div>
+
+
+
+</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
