@@ -1,0 +1,1 @@
+# tamura_analise_concorrentes
